@@ -1,4 +1,4 @@
-Here's a PowerShell script to automate the creation of a .NET solution with WPF and Console projects, including various configurations and tasks as described:
+A PowerShell script to automate the creation of a .NET solution with WPF and Console projects, including various configurations and tasks:
 
 ```powershell
 # PowerShell Script to Create a .NET Solution with WPF and Console Projects
