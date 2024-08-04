@@ -1,5 +1,3 @@
-Here's the tutorial with proper numbering for modules and subtopics, arranged neatly:
-
 ## Introduction
 
 This tutorial is designed to introduce software architects to PowerShell, covering both basic and advanced concepts. Through practical examples, you'll learn how to leverage PowerShell for system administration, automation, and scripting tasks.
