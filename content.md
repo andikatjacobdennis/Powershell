@@ -432,20 +432,6 @@ Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "MyDailyTask"
 Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Process }
 ```
 
-### 5. Module 4: Practical Projects
-
-#### 5.1 Module 4 Introduction
-
-#### 5.2 Project 1: Automating Active Directory User Management
-
-#### 5.3 Project 2: System Inventory Script
-
-#### 5.4 Project 3: Network Configuration Script
-
-#### 5.5 Project 4: Automated Backup Script
-
-#### 5.6 Project 5: Reporting and Notification System
-
 ### Conclusion
 
 By the end of this tutorial, you should have a solid understanding of both basic and advanced PowerShell concepts, enabling you to automate complex tasks and manage systems efficiently.
