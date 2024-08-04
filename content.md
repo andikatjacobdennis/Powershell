@@ -1,12 +1,12 @@
+Here's the tutorial with proper numbering for modules and subtopics, arranged neatly:
+
 ## Introduction
 
 This tutorial is designed to introduce software architects to PowerShell, covering both basic and advanced concepts. Through practical examples, you'll learn how to leverage PowerShell for system administration, automation, and scripting tasks.
 
-### Introduction to PowerShell
+### 1. Introduction to PowerShell
 
-### Module 0: Getting Started
-
-#### What is PowerShell and PowerShell Versions
+#### 1.1 What is PowerShell and PowerShell Versions
 
 PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and the associated scripting language. It is built on the .NET framework and helps IT professionals and power users control and automate the administration of Windows operating systems and applications.
 
@@ -15,7 +15,7 @@ PowerShell is a task automation and configuration management framework from Micr
   - **PowerShell Core**: Cross-platform (Windows, macOS, Linux), supports .NET Core.
   - **PowerShell 7**: The latest version, combining the best features of Windows PowerShell and PowerShell Core.
 
-#### Why PowerShell and Examples
+#### 1.2 Why PowerShell and Examples
 
 PowerShell is favored for its powerful scripting capabilities, access to .NET libraries, and its ability to interact seamlessly with various system components.
 
@@ -30,21 +30,21 @@ New-ADUser -Name "John Doe" -GivenName "John" -Surname "Doe" -SamAccountName "jd
 Get-ComputerInfo
 ```
 
-#### Word of Note
+#### 1.3 Word of Note
 
 PowerShell is a powerful tool that can make system administration more efficient. However, improper use can lead to significant issues, so it's crucial to understand the commands and scripts you run.
 
-### Module 1: PowerShell Basics
+### 2. Module 1: PowerShell Basics
 
-#### Module 1 Introduction
+#### 2.1 Module 1 Introduction
 
 In this module, you'll get acquainted with the fundamentals of PowerShell, including basic commands (cmdlets), syntax, and how to use the pipeline.
 
-#### Getting to Know PowerShell
+#### 2.2 Getting to Know PowerShell
 
 PowerShell cmdlets are the building blocks of scripts and automation tasks.
 
-#### Cmdlets and Parameters - Examples with Get and Set
+#### 2.3 Cmdlets and Parameters - Examples with Get and Set
 
 Cmdlets are lightweight commands used in the PowerShell environment. They follow a verb-noun naming pattern.
 
@@ -58,7 +58,7 @@ Get-Process
 Set-Service -Name "wuauserv" -Status "Stopped"
 ```
 
-#### Getting Help for PowerShell
+#### 2.4 Getting Help for PowerShell
 
 Use the `Get-Help` cmdlet to find information about cmdlets and concepts in PowerShell.
 
@@ -67,7 +67,7 @@ Use the `Get-Help` cmdlet to find information about cmdlets and concepts in Powe
 Get-Help Get-Process
 ```
 
-#### Which Cmdlet Does the Job for You?
+#### 2.5 Which Cmdlet Does the Job for You?
 
 Use `Get-Command` to discover cmdlets.
 
@@ -76,7 +76,7 @@ Use `Get-Command` to discover cmdlets.
 Get-Command -Verb Get
 ```
 
-#### What Are Modules?
+#### 2.6 What Are Modules?
 
 Modules are packages of cmdlets, functions, and other tools. Import modules to extend PowerShell's functionality.
 
@@ -85,7 +85,7 @@ Modules are packages of cmdlets, functions, and other tools. Import modules to e
 Import-Module ActiveDirectory
 ```
 
-#### How Does the Pipeline Work?
+#### 2.7 How Does the Pipeline Work?
 
 The pipeline (`|`) passes the output of one cmdlet as input to another.
 
@@ -94,7 +94,7 @@ The pipeline (`|`) passes the output of one cmdlet as input to another.
 Get-Process | Where-Object { $_.CPU -gt 100 }
 ```
 
-#### Outputting to a Text File
+#### 2.8 Outputting to a Text File
 
 Redirect output to a text file using `Out-File`.
 
@@ -103,11 +103,11 @@ Redirect output to a text file using `Out-File`.
 Get-Process | Out-File "processes.txt"
 ```
 
-#### Parameters vs Properties
+#### 2.9 Parameters vs Properties
 
 Parameters modify cmdlet behavior, while properties are attributes of objects returned by cmdlets.
 
-#### Formatting Data in PowerShell
+#### 2.10 Formatting Data in PowerShell
 
 Use `Format-Table` or `Format-List` to format output.
 
@@ -116,11 +116,11 @@ Use `Format-Table` or `Format-List` to format output.
 Get-Process | Format-Table -Property Name, CPU
 ```
 
-#### PowerShell Objects: A Deeper Look
+#### 2.11 PowerShell Objects: A Deeper Look
 
 PowerShell is object-oriented. Each output from a cmdlet is an object with properties and methods.
 
-#### Getting to Properties and Methods
+#### 2.12 Getting to Properties and Methods
 
 Access properties using `.` notation.
 
@@ -129,53 +129,53 @@ Access properties using `.` notation.
 (Get-Process)[0].Name
 ```
 
-#### What Kind of Properties Do We Have?
+#### 2.13 What Kind of Properties Do We Have?
 
 Properties can be simple data types (string, int) or complex objects.
 
-#### What Kind of Parameters Do We Have?
+#### 2.14 What Kind of Parameters Do We Have?
 
 Parameters can be mandatory, optional, positional, or named.
 
-#### Using Where-Object to Filter Properties
+#### 2.15 Using Where-Object to Filter Properties
 
 **Example**:
 ```powershell
 Get-Process | Where-Object { $_.CPU -gt 100 }
 ```
 
-#### Select-Object for Outputting Specific Information
+#### 2.16 Select-Object for Outputting Specific Information
 
 **Example**:
 ```powershell
 Get-Process | Select-Object -Property Name, CPU
 ```
 
-#### Sorting with Sort-Object
+#### 2.17 Sorting with Sort-Object
 
 **Example**:
 ```powershell
 Get-Process | Sort-Object -Property CPU -Descending
 ```
 
-#### Outputting to CSV
+#### 2.18 Outputting to CSV
 
 **Example**:
 ```powershell
 Get-Process | Export-Csv -Path "processes.csv"
 ```
 
-### Module 2: Advanced PowerShell Concepts
+### 3. Module 2: Advanced PowerShell Concepts
 
-#### Module 2 Introduction
+#### 3.1 Module 2 Introduction
 
 This module delves into advanced topics like scripting, variables, loops, and automation.
 
-#### Our Old Friend the ISE
+#### 3.2 Our Old Friend the ISE
 
 The Integrated Scripting Environment (ISE) is a graphical host for PowerShell, providing a rich scripting experience.
 
-#### Writing Our First Script
+#### 3.3 Writing Our First Script
 
 Save commands in a `.ps1` file and execute it.
 
@@ -190,11 +190,11 @@ Run the script:
 .\MyScript.ps1
 ```
 
-#### What Are Variables?
+#### 3.4 What Are Variables?
 
 Variables store data for reuse. Declare variables using `$`.
 
-#### Different Kinds of Variables
+#### 3.5 Different Kinds of Variables
 
 PowerShell supports various variable types, including strings, integers, arrays, and hash tables.
 
@@ -205,7 +205,7 @@ $array = @(1, 2, 3)
 $hashTable = @{Name="John"; Age=30}
 ```
 
-#### Defining Data Types in PowerShell
+#### 3.6 Defining Data Types in PowerShell
 
 Specify data types explicitly.
 
@@ -215,7 +215,7 @@ Specify data types explicitly.
 [string]$text = "PowerShell"
 ```
 
-#### Read-Host: Dealing with Data
+#### 3.7 Read-Host: Dealing with Data
 
 **Example**:
 ```powershell
@@ -223,7 +223,7 @@ $name = Read-Host "Enter your name"
 Write-Output "Hello, $name"
 ```
 
-#### How Operators Operate
+#### 3.8 How Operators Operate
 
 PowerShell supports arithmetic, comparison, and logical operators.
 
@@ -233,11 +233,11 @@ $result = 5 + 3
 $isEqual = 5 -eq 5
 ```
 
-#### Objects, Objects, Objects!
+#### 3.9 Objects, Objects, Objects!
 
 PowerShell's core is its object-oriented nature, allowing manipulation of complex data structures.
 
-#### Decisions with If (Part 1)
+#### 3.10 Decisions with If (Part 1)
 
 **Example**:
 ```powershell
@@ -246,7 +246,7 @@ if ($true) {
 }
 ```
 
-#### Decisions with If (Part 2)
+#### 3.11 Decisions with If (Part 2)
 
 **Example**:
 ```powershell
@@ -257,7 +257,7 @@ if ($false) {
 }
 ```
 
-#### Decisions with If (Part 3)
+#### 3.12 Decisions with If (Part 3)
 
 **Example**:
 ```powershell
@@ -271,7 +271,7 @@ if ($number -gt 10) {
 }
 ```
 
-#### Nesting Our If Statement
+#### 3.13 Nesting Our If Statement
 
 **Example**:
 ```powershell
@@ -282,7 +282,7 @@ if ($true) {
 }
 ```
 
-#### Comparison Operators
+#### 3.14 Comparison Operators
 
 **Example**:
 ```powershell
@@ -290,7 +290,7 @@ $isEqual = 5 -eq 5
 $isNotEqual = 5 -ne 4
 ```
 
-#### Logical Operators
+#### 3.15 Logical Operators
 
 **Example**:
 ```powershell
@@ -298,7 +298,7 @@ $and = ($true -and $false)
 $or = ($true -or $false)
 ```
 
-#### Looping with the While Loop
+#### 3.16 Looping with the While Loop
 
 **Example**:
 ```powershell
@@ -309,7 +309,7 @@ while ($count -lt 5) {
 }
 ```
 
-#### Looping with Foreach
+#### 3.17 Looping with Foreach
 
 **Example**:
 ```powershell
@@ -319,9 +319,9 @@ foreach ($item in $array) {
 }
 ```
 
-#### In Case You Didn't Get My Two Where-Objects One-Liners Remark
+#### 3.18 In Case You Didn't Get My Two Where-Objects One-Liners Remark
 
-#### Getting Text Input
+#### 3.19 Getting Text Input
 
 **Example**:
 ```powershell
@@ -329,86 +329,125 @@ $text = Read-Host "Enter some text"
 Write-Output $text
 ```
 
-#### Importing CSV Files
+#### 3.20 Importing CSV Files
 
 **Example**:
 ```powershell
 $csv = Import-Csv -Path "data.csv"
 ```
 
-#### Using a CSV File to Create Something
+#### 3.21 Using a CSV File to Create Something
 
 **Example**:
 ```powershell
 $csv = Import-Csv -Path "users.csv"
 foreach ($user in $csv) {
-    New-ADUser -Name $user.Name -GivenName $user.GivenName -Surname $user.Surname -SamAccountName $user.SamAccountName -UserPrincipalName $user.UserPrincipalName -Path "OU=Users,DC=domain,DC=com"
+    New
+
+-ADUser -Name $user.Name -SamAccountName $user.SamAccountName
 }
 ```
 
-#### Moving to Active Directory and Creating a User
+#### 3.22 Practical Example: Automation Using PowerShell
+
+#### 3.23 Additional Scripting Best Practices
+
+### 4. Module 3: Advanced PowerShell Scripting
+
+#### 4.1 Module 3 Introduction
+
+#### 4.2 Writing Functions
 
 **Example**:
 ```powershell
-New-ADUser -Name "John Doe" -GivenName "John" -Surname "Doe" -SamAccountName "jdoe" -UserPrincipalName "jdoe@domain.com" -Path "OU=Users,DC=domain,DC=com"
-```
-
-#### Moving to Active Directory and Retrieving a User
-
-**Example**:
-```powershell
-Get-ADUser -Identity "jdoe"
-```
-
-#### Moving to Active Directory and Setting AD User Properties
-
-**Example**:
-```powershell
-
-
-Set-ADUser -Identity "jdoe" -Title "Manager"
-```
-
-#### Moving to Active Directory and Creating and Moving Between OUs
-
-**Example**:
-```powershell
-New-ADOrganizationalUnit -Name "NewOU" -Path "DC=domain,DC=com"
-Move-ADObject -Identity "CN=John Doe,OU=Users,DC=domain,DC=com" -TargetPath "OU=NewOU,DC=domain,DC=com"
-```
-
-#### Creating Active Directory Users from a Simple Text File
-
-**Example**:
-```powershell
-Get-Content -Path "users.txt" | ForEach-Object { New-ADUser -Name $_ -Path "OU=Users,DC=domain,DC=com" }
-```
-
-#### Creating Active Directory Users from a CSV File
-
-**Example**:
-```powershell
-$csv = Import-Csv -Path "users.csv"
-foreach ($user in $csv) {
-    New-ADUser -Name $user.Name -GivenName $user.GivenName -Surname $user.Surname -SamAccountName $user.SamAccountName -UserPrincipalName $user.UserPrincipalName -Path "OU=Users,DC=domain,DC=com"
+function Get-Square {
+    param ($number)
+    return $number * $number
 }
 ```
 
-#### What Is PowerShell Remoting?
-
-PowerShell Remoting allows you to run commands on remote computers.
-
-#### Enabling PowerShell Remoting
+#### 4.3 Writing Advanced Functions with Parameters and Validation
 
 **Example**:
 ```powershell
-Enable-PSRemoting -Force
+function Get-Square {
+    param (
+        [int]$number
+    )
+    return $number * $number
+}
 ```
 
-#### One-To-Many and Using Persistent Sessions
+#### 4.4 Error Handling with Try, Catch, Finally
 
 **Example**:
 ```powershell
-$s = New-PSSession -ComputerName Server01
-Invoke-Command -Session $s -ScriptBlock { Get-Process }
+try {
+    # Code that might throw an error
+    $result = 1 / 0
+} catch {
+    Write-Output "An error occurred: $_"
+} finally {
+    Write-Output "Execution completed"
+}
 ```
+
+#### 4.5 Working with Modules
+
+Create reusable modules for your scripts.
+
+#### 4.6 Using Custom Modules
+
+**Example**:
+```powershell
+Import-Module MyCustomModule
+```
+
+#### 4.7 Advanced Automation Scenarios
+
+#### 4.8 Interacting with REST APIs
+
+**Example**:
+```powershell
+$response = Invoke-RestMethod -Uri "https://api.example.com/data" -Method Get
+```
+
+#### 4.9 Advanced Logging Techniques
+
+#### 4.10 Task Scheduling with PowerShell
+
+**Example**:
+```powershell
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\Scripts\MyScript.ps1"
+$trigger = New-ScheduledTaskTrigger -Daily -At 9am
+Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "MyDailyTask"
+```
+
+#### 4.11 Monitoring and Notification
+
+#### 4.12 Advanced Data Processing
+
+#### 4.13 Managing Remote Systems with PowerShell
+
+**Example**:
+```powershell
+Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Process }
+```
+
+### 5. Module 4: Practical Projects
+
+#### 5.1 Module 4 Introduction
+
+#### 5.2 Project 1: Automating Active Directory User Management
+
+#### 5.3 Project 2: System Inventory Script
+
+#### 5.4 Project 3: Network Configuration Script
+
+#### 5.5 Project 4: Automated Backup Script
+
+#### 5.6 Project 5: Reporting and Notification System
+
+### Conclusion
+
+By the end of this tutorial, you should have a solid understanding of both basic and advanced PowerShell concepts, enabling you to automate complex tasks and manage systems efficiently.
