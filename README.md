@@ -1,4 +1,3 @@
-```markdown
 # PowerShell Tutorial for Software Architects
 
 ## Introduction
