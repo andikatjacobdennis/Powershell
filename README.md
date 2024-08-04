@@ -1,7 +1,7 @@
-# PowerShell Tutorial for Software Dev
+# PowerShell Tutorial for Software Development
 
 ## Introduction
-This tutorial is designed to introduce software dev to PowerShell, covering both basic and advanced concepts. Through practical examples, you'll learn how to leverage PowerShell for system administration, automation, and scripting tasks.
+This tutorial is designed to introduce software development to PowerShell, covering both basic and advanced concepts. Through practical examples, you'll learn how to leverage PowerShell for system administration, automation, and scripting tasks.
 
 ## Table of Contents
 
