@@ -1,6 +1,6 @@
 # Snippets
 
-## Combine Multiple Text Files into a Single File
+## 1. Combine Multiple Text Files into a Single File
 
 This script searches for all .txt files in a given directory (C:\tmp) and any of its subdirectories. 
 It reads the content of each file and outputs the combined content into a single file (result.txt) on the user’s Desktop. 
