@@ -1,7 +1,5 @@
 # PowerShell Tutorial
 
-PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework
-
 ## Table of Contents
 
 1. [Introduction to PowerShell](#1-introduction-to-powershell)
