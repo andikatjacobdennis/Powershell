@@ -1,6 +1,6 @@
 # PowerShell Tutorial
 
-PowerShell is a powerful scripting language and automation framework developed by Microsoft. It is used for task automation, configuration management, and system administration. This guide covers everything from basic commands to advanced scripting techniques.
+PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework
 
 ## Table of Contents
 
