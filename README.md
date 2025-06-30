@@ -15,8 +15,12 @@
 11. [Working with Files and Folders](#11-working-with-files-and-folders)
 12. [PowerShell Pipeline](#12-powershell-pipeline)
 13. [Remote Management](#13-remote-management)
-14. [Scripting Best Practices](#14-scripting-best-practices)
-15. [Practical Examples](#15-practical-examples)
+14. [Modules and Scripting](#14-modules-and-scripting)  
+15. [Advanced Automation](#15-advanced-automation)  
+16. [PowerShell in DevOps](#16-powershell-in-devops)  
+17. [Security Best Practices](#17-security-best-practices)  
+18. [Debugging and Optimization](#18-debugging-and-optimization)  
+19. [Practical Scripting Examples](#19-practical-scripting-examples)  
 
 ## 1. Introduction to PowerShell
 
@@ -294,32 +298,141 @@ Enter-PSSession -ComputerName "Server01"
 ```powershell
 Invoke-Command -ComputerName "Server01" -ScriptBlock { Get-Service }
 ```
+## 14. Modules and Scripting  
 
-## 14. Scripting Best Practices
+### What are Modules?  
+Modules are reusable PowerShell scripts that contain functions, cmdlets, and variables.  
 
-✔ Use descriptive variable names (`$userName` instead of `$x`).  
-✔ Comment your code (`# This is a comment`).  
-✔ Handle errors (`Try-Catch`).  
-✔ Avoid hardcoding paths (use parameters).
-
-## 15. Practical Examples
-
-### Example 1: Backup Files
-
+#### List Installed Modules  
 ```powershell
-$source = "C:\Data"
-$destination = "D:\Backup"
-Copy-Item $source $destination -Recurse
+Get-Module -ListAvailable
 ```
 
-### Example 2: Monitor CPU Usage
-
+#### Import a Module  
 ```powershell
-Get-Process | Sort-Object CPU -Descending | Select-Object -First 5
+Import-Module ActiveDirectory
 ```
 
-### Example 3: Bulk Rename Files
+#### Create a Custom Module  
+1. Create a `.psm1` file (e.g., `MyModule.psm1`).  
+2. Define functions inside it.  
+3. Import it:  
+   ```powershell
+   Import-Module .\MyModule.psm1
+   ```
 
+
+## 15. Advanced Automation  
+
+### Scheduled Tasks  
+Automate scripts using Task Scheduler:  
 ```powershell
-Get-ChildItem *.txt | Rename-Item -NewName { $_.Name -replace ".txt", "_new.txt" }
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\Scripts\Backup.ps1"
+$trigger = New-ScheduledTaskTrigger -Daily -At "3:00 AM"
+Register-ScheduledTask -TaskName "DailyBackup" -Action $action -Trigger $trigger
+```
+
+### Web Requests (REST API Calls)  
+```powershell
+$response = Invoke-RestMethod -Uri "https://api.example.com/data" -Method Get
+$response | ConvertTo-Json
+```
+
+### Working with JSON  
+```powershell
+$json = '{"name": "John", "age": 30}' | ConvertFrom-Json
+$json.name  # Output: John
+```
+
+
+## 16. PowerShell in DevOps  
+
+### Azure Automation  
+Manage Azure resources:  
+```powershell
+Connect-AzAccount
+Get-AzVM
+```
+
+### Docker Integration  
+```powershell
+docker ps | ConvertFrom-Json | Select-Object ID, Names
+```
+
+### CI/CD with PowerShell  
+Example Azure DevOps Pipeline:  
+```yaml
+steps:
+- powershell: |
+    Write-Host "Running PowerShell in CI/CD"
+    ./Deploy.ps1
+```
+
+
+## 17. Security Best Practices  
+
+### Execution Policy  
+Restrict script execution:  
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
+
+### Secure Credentials  
+```powershell
+$cred = Get-Credential
+$securePassword = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+```
+
+### Logging and Auditing  
+```powershell
+Start-Transcript -Path "C:\Logs\ScriptLog.txt"
+# Your script here
+Stop-Transcript
+```
+
+
+## 18. Debugging and Optimization  
+
+### Debugging Techniques  
+- Breakpoints:  
+  ```powershell
+  Set-PSBreakpoint -Script .\Script.ps1 -Line 10
+  ```
+- Verbose Output:  
+  ```powershell
+  Write-Verbose "Debugging info" -Verbose
+  ```
+
+### Performance Optimization  
+- Avoid `+=` with large arrays (use `ArrayList` instead).  
+- Use `Where-Object` early in pipelines.  
+
+
+## 19. Practical Scripting Examples  
+
+### Example 1: Automated System Report  
+```powershell
+$report = @"
+System Report----------
+Date: $(Get-Date)
+CPU: $(Get-WmiObject Win32_Processor | Select-Object -ExpandProperty LoadPercentage)%
+Memory: $(Get-WmiObject Win32_OperatingSystem | Select-Object -ExpandProperty FreePhysicalMemory) MB free
+"@
+$report | Out-File "C:\Reports\SystemReport.txt"
+```
+
+### Example 2: Active Directory User Management  
+```powershell
+Import-Module ActiveDirectory
+New-ADUser -Name "John Doe" -SamAccountName "jdoe" -Enabled $true
+```
+
+### Example 3: Bulk Image Resizing  
+```powershell
+Add-Type -AssemblyName System.Drawing
+Get-ChildItem *.jpg | ForEach-Object {
+    $img = [System.Drawing.Image]::FromFile($_.FullName)
+    $newImg = $img.GetThumbnailImage(800, 600, $null, [IntPtr]::Zero)
+    $newImg.Save("Resized_$($_.Name)")
+}
 ```
